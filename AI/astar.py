@@ -63,9 +63,10 @@ try:
             open_list = sorted(open_list, key=lambda x: x[1])
         # open_list = [pair for pair in open_list if pair[0] != parent_node]
         # before:[['S', 20, ['S']], ['A', 21, ['S', 'A']], ['B', 26, ['S', 'B']], ['C', 27, ['S', 'C']]]
-        for i in open_list:  #basically ye loop se parent hata diya open list se taaki next iteration mein S ki jagah A lenge as parent
-            if i[0]!=parent_node: 
-                open_list.append(i)
+        #basically ye loop se parent hata diya open list se taaki next iteration mein S ki jagah A lenge as parent
+        for i in open_list:
+            if i[0] == parent_node:
+                open_list.remove(i)
         # after:[['A', 21, ['S', 'A']], ['B', 26, ['S', 'B']], ['C', 27, ['S', 'C']]]  
         print(f"Open List is : {open_list}\nclosed List is : {close_list}\n")
 except:
