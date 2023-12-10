@@ -9,10 +9,9 @@
   <body>
     <h1>Hello</h1>
     <button onclick="handleClick()">Load JSON</button>
-    <p id="name"></p>
-    <p id="city"></p>
-    <p id="country"></p>
+    <table id="details"></table>
     <script>
+        var table=""
       async function handleClick() {
         var met;
         var data=await fetch('./data.json')
@@ -21,7 +20,11 @@
             return obj.name==='xyz'
         })
         console.log(res)
-      }
+        res.forEach(element => {
+            table+='<tr><td>'+element['name']+'</td><td>'+element['location']+'</td><td>'+element['country']+'</td></tr>'
+        });
+        document.getElementById("details").innerHTML=table
+      }      
     </script>
   </body>
 </html>
