@@ -35,4 +35,6 @@ def main():
     tester=Tester(3,'Dhoni')
     manager.add_dev(developer=developer)
     manager.myDevs()
+    manager.rem_dev(2)
+    manager.myDevs()
 main() 
