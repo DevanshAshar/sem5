@@ -11,8 +11,9 @@
     <button onclick="handleClick()">Load JSON</button>
     <table id="details"></table>
     <script>
-        var table=""
+        
       async function handleClick() {
+        var table=""
         var met;
         var data=await fetch('./data.json')
         data=await data.json()
