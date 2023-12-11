@@ -1,0 +1,14 @@
+create table subm(id int,name varchar(50),submDate Date, submtime time);
+INSERT INTO subm VALUES
+  (1, 'devansh', '2023-07-04', '04:00:00'),
+  (2, 'John', '2023-07-05', '12:30:00'),
+  (3, 'Alice', '2023-07-06', '08:45:00'),
+  (4, 'Bob', '2023-07-07', '15:20:00'),
+  (5, 'Eva', '2023-07-08', '18:10:00'),
+  (6, 'Mike', '2023-07-09', '10:00:00'),
+  (7, 'Sophie', '2023-07-10', '14:55:00'),
+  (8, 'Chris', '2023-07-11', '21:30:00'),
+  (9, 'Emma', '2023-07-12', '07:45:00'),
+  (10, 'Daniel', '2023-07-13','16:25:00');
+select * from subm where submDate>'2023-07-06';
+select * from subm where submTime>'15:20:00';
