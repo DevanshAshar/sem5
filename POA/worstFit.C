@@ -1,32 +1,26 @@
 #include <stdio.h>
 void main()
 {
-    int temp,n_proc=4,n_mem=6,mem_loc[100],visited[100],index=0;
+    int n_proc=4,n_mem=6,mem_loc[100],visited[100],mem_index=0;
     int mem_sizes[] = {200, 400, 600, 500, 300, 250};
     int process_sizes[] = {357, 210, 468, 491};
     for(int i=0;i<n_mem;i++)
-    visited[i] = 0;
-    for(int i=0;i<n_mem-1;i++)
     {
-        for(int j=0;j<n_mem-1;j++)
-        {
-            if(mem_sizes[j]<mem_sizes[j+1])
-            {
-                temp = mem_sizes[j];
-                mem_sizes[j] = mem_sizes[j+1];
-                mem_sizes[j+1] = temp;
-            }
-        }
+        visited[i] = 0;
+        mem_loc[i]=-1;
     }
     for(int i=0;i<n_proc;i++)
     {
-        if(process_sizes[i] <= mem_sizes[index])
+        int max_diff = -9999;
+        for(int j=0;j<n_mem;j++)
         {
-            mem_loc[i] = index;
-            index++;            
+            if(mem_sizes[j]-process_sizes[i]>max_diff && mem_sizes[j]-process_sizes[i]>=0 && visited[j]==0)
+            {
+                max_diff = mem_sizes[j]-process_sizes[i];
+                mem_loc[i] = j;
+            }
         }
-        else
-        mem_loc[i] = -1;
+        visited[mem_loc[i]] = 1;
     }
     for(int i =0;i<n_proc;i++)
     {
