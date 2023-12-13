@@ -1,0 +1,25 @@
+DATA SEGMENT
+    N1 DB 1h,2h,3h
+    SIZE equ $ - N1
+ends
+EXTRA SEGMENT
+    N2 DB ?
+ENDS
+CODE SEGMENT
+    START:
+    MOV AX,DATA
+    MOV DS,AX
+    LEA SI,N1
+    MOV CL,SIZE
+    MOV AX,EXTRA
+    MOV ES,AX
+    LEA DI,N2
+    L1:
+    MOV AH,DS:[SI]
+    MOV ES:[DI],AH
+    INC SI
+    INC DI
+    DEC CL
+    JNZ L1   
+ENDS
+END START
